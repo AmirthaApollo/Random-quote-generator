@@ -13,13 +13,13 @@
       <span id="author">Loading...</span>
       <div>
         <button onclick="getquote(api_url);">New Quote</button>
-        <button onclick="tweet()"><img src="x icon.png" />Tweet</button>
+        <button onclick="tweet()"><img src="x-icon.webp" />Tweet</button>
       </div>
     </div>
     <script>
       const quote = document.getElementById("quote");
       const author = document.getElementById("author");
-      const api_url = "https://api.quotable.io/random";
+      const api_url = "http://api.quotable.io/random";
 
       async function getquote(url) {
         const response = await fetch(url);
@@ -37,7 +37,7 @@
             " - by " +
             author.innerHTML,
           "Tweet Window",
-          "width=600, height=300"
+          "width=600, height=600"
         );
       }
     </script>
