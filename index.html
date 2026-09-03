@@ -19,14 +19,20 @@
     <script>
       const quote = document.getElementById("quote");
       const author = document.getElementById("author");
-      const api_url = "http://api.quotable.io/random";
+      const api_url = "https://dummyjson.com/quotes/random";
 
       async function getquote(url) {
-        const response = await fetch(url);
-        var data = await response.json();
+        try {
+          const response = await fetch(url);
+          if (!response.ok) throw new Error("Request failed: " + response.status);
+          const data = await response.json();
 
-        quote.innerHTML = data.content;
-        author.innerHTML = data.author;
+          quote.innerHTML = data.quote;
+          author.innerHTML = data.author;
+        } catch (error) {
+          quote.innerHTML = "Couldn't load a quote right now.";
+          author.innerHTML = "";
+        }
       }
       getquote(api_url);
 
